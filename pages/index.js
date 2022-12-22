@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
+import Product from '../components/Product'
 
 export default function Home() {
   return (
@@ -39,9 +40,23 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Product Section */}
+        <p className='ml-4 text-lg tracking-wide'>Trending This Week</p>
+        <div className='flex flex-col md:flex-row'>
+          <div className='flex-1 mr-4 ml-2'>
+            <Product />
+          </div>
+          <div className='flex-1 mr-4 ml-2'>
+            <Product />
+          </div>
+          <div className='flex-1 mr-4 ml-2'>
+            <Product />
+          </div>
+        </div>
+
 
         {/* Footer section */}
-        <Footer/>
+        <Footer />
       </main>
     </div>
   )
