@@ -25,6 +25,16 @@ module.exports = {
             transform: "translateX(0%)",
           },
         },
+        "slide-out": {
+          "0%": {
+            "-webkit-transform": "translateX(0%)",
+            transform: "translateX(0%)",
+          },
+          "100%": {
+            "-webkit-transform": "translateX(50%)",
+            transform: "translateX(50%)",
+          },
+        },
 
         "rotate-right":{
           "0%":{
@@ -52,6 +62,7 @@ module.exports = {
       },
       animation: {
         "slide-in": "slide-in 0.5s ease-in",
+        "slide-out": "slide-in 0.5s ease-in",
         "rotate-right":"rotate-right 0.5s ease",
         "rotate-left":"rotate-left 0.5s ease",
       },

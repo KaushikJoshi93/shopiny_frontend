@@ -1,7 +1,5 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
 import Product from '../components/Product'
 
 export default function Home() {
@@ -16,8 +14,6 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Inter:wght@100;200;300;400;500;600;700;800&family=Josefin+Sans:wght@300;400;600&family=Montserrat:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet"></link>
       </Head>
       <main className='overflow-x-hidden' >
-        {/* navbar for the website */}
-        <Navbar />
         {/* hero section */}
         <div className='flex h-96 mt-5'>
           <div className='flex-1 flex flex-col items-center p-12'>
@@ -27,7 +23,7 @@ export default function Home() {
             <div className='mb-5'>
               <p className='text-2xl md:text-3xl font-semibold font-sans'>Minimal Menz Style</p>
             </div>
-            <div className='mb-5 text-center flex justify-center text-start'>
+            <div className='mb-5 text-center flex justify-center '>
               <p className='text-gray-400 font-medium  text-[16px] text-center md:text-start w-[90%]'>Your one stop destination for shopping , where you can buy
                 various things at the most affordable price </p>
             </div>
@@ -55,8 +51,6 @@ export default function Home() {
         </div>
 
 
-        {/* Footer section */}
-        <Footer />
       </main>
     </div>
   )
