@@ -1,6 +1,7 @@
 import ProductDataComponent from "@/components/ProductDataComponent";
 import { axios } from "@/helper/axios";
 import Product from "@/components/Product";
+import toast from "react-hot-toast";
 
 
 
@@ -12,7 +13,7 @@ const fetchProductDetail = async (productId) => {
     // console.log(productInfo);
     return productInfo;
   } catch (err) {
-    console.log(err);
+    toast.error(err?.message || "Error While Fetching Product Details")
   }
 };
 const fetchProducts = async () => {
@@ -21,14 +22,13 @@ const fetchProducts = async () => {
     const all_products = res.data;
     return all_products;
   } catch (err) {
-    console.log(err);
+    toast.error(err?.message || "Some Error Occured")
   }
 };
 
 export default async function ({ params }) {
   const productId = params.productId;
   let productData , products;
-  console.log('rendering...');
   [productData , products] = await Promise.all([fetchProductDetail(productId) , fetchProducts()])
  
   

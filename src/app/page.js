@@ -33,7 +33,6 @@ const page = () => {
     const res = await axios.get("/product");
     const all_products = res.data;
     setProducts(all_products);
-    console.log(all_products);
   };
 
   useEffect(() => {

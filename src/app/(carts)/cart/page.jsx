@@ -8,7 +8,6 @@ const page = () => {
   const getCartSize = async()=>{
     let res = await axios.get("/cart/find/cartsize");
     let data =  res.data;
-    console.log(data)
     toast.success("CartSize is : "+data.cartSize)
   }
 

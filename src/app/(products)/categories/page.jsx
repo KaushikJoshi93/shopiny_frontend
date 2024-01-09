@@ -25,13 +25,11 @@ const page = () => {
       let url_string = `/product/category?category=${
         filter.category ?? ""
       }&price=${filter.price ?? ""}&size=${filter.size ?? ""}`;
-      console.log(url_string);
       let res = await axios.get(url_string);
       let data = res.data.products;
       setProducts(data);
     } catch (err) {
       toast.error("Error Loading Products!! Try Again later");
-      console.log(err);
     } finally {
       setLoading(false);
     }
@@ -78,7 +76,6 @@ const page = () => {
       setCats(all_cats);
     } catch (err) {
       toast.error("Error loading Categories!! Please Refresh Page");
-      console.log(err.message);
     }
   };
   useEffect(() => {
