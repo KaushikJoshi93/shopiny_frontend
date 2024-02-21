@@ -13,7 +13,8 @@ const TextField = ({
   value,
   onChangeHandler,
   formikErrorObj,
-  pattern=null
+  pattern=null,
+  onBlur
 }) => (
   <div className="mt-2 w-full">
     <label htmlFor={label} className="flex flex-col gap-1">
@@ -27,6 +28,7 @@ const TextField = ({
         onChange={onChangeHandler}
         pattern={pattern}
         title={formikErrorObj ?? type.toUpperCase()}
+        onBlur={onBlur}
         required
       />
       {formikErrorObj ? (
@@ -58,6 +60,7 @@ const page = () => {
     onSubmit: async(values) => {
       await register(values)
     },
+    validateOnBlur:true,
   });
   return (
     <div className="flex justify-center items-center m-8">
@@ -81,7 +84,8 @@ const page = () => {
               placeholder={"Enter your username"}
               value={formik.values.username}
               onChangeHandler={formik.handleChange}
-              formikErrorObj={formik.errors.username}
+              formikErrorObj={formik.touched.username && formik.errors.username}
+              onBlur={()=>formik.setFieldTouched("username")}
             />
             <TextField
               label={"Email"}
@@ -89,7 +93,8 @@ const page = () => {
               placeholder={"Enter your email"}
               value={formik.values.email}
               onChangeHandler={formik.handleChange}
-              formikErrorObj={formik.errors.email}
+              formikErrorObj={formik.touched.email && formik.errors.email}
+              onBlur={()=>formik.setFieldTouched("email")}
             />
             <TextField
               label={"Password"}
@@ -97,7 +102,8 @@ const page = () => {
               placeholder={"Enter your password"}
               value={formik.values.password}
               onChangeHandler={formik.handleChange}
-              formikErrorObj={formik.errors.password}
+              formikErrorObj={formik.touched.password && formik.errors.password}
+              onBlur={()=>formik.setFieldTouched("password")}
               pattern={`^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$`}
             />
             <button

@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
           {children}
         </div>
         <Footer />
-        <Script src='/scripts/imp_scripts.js' ></Script>
+        <Script src='./scripts/imp_scripts.js' defer></Script>
       </body>
     </html>
   )

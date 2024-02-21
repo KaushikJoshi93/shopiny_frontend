@@ -14,7 +14,7 @@ const useAuth = () => {
       setLoading(true);
       const res = await axios.post("/auth/register" , valuesObj);
       const data = res.data;
-      router.replace("/login");
+      router.replace("/auth/login");
       console.log(data)
       toast.success("User Registered Successfully");
     } catch (err) {
@@ -41,10 +41,13 @@ const useAuth = () => {
       setLoading(false);
     }
   };
-  const logout = () => {
+  const logout = async() => {
     try {
       setLoading(true);
-      alert("Logging out...");
+      const res = await axios.get("/auth/logout");
+      console.log(res.data)
+      router.replace("/auth/login")
+      toast.success("Logged Out Successfully");
     } catch (err) {
       console.error(err);
     } finally {

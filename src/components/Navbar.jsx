@@ -6,9 +6,11 @@ import Link from "next/link";
 import { useAsyncStore } from "@/hooks/useAsyncStore";
 import { useCartStore } from "@/globalStore/cartStore";
 import { useUserStore } from "@/globalStore/userStore";
+import useAuth from "@/hooks/useAuth";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const {logout} = useAuth();
   const { cartValue } =
     useAsyncStore(useCartStore, (state) => ({
       cartValue: state.cartValue,
@@ -18,6 +20,11 @@ const Navbar = () => {
     user: state.user,
     removeUser: state.removeUser
   })) || {};
+
+  const logoutUser = async()=>{
+    removeUser();
+    logout();
+  }
   useEffect(() => {
     if (toggleMenu) {
       document.body.style.overflowY = "hidden";
@@ -72,13 +79,13 @@ const Navbar = () => {
             </li>
             {user ? (
               <li
-                className="cursor-pointer hover:text-gray-400 bg-[#ec48de] p-2 text-white rounded-full group relative"
+                className="cursor-pointer hover:text-gray-400 bg-[#ec48de] p-2 text-white rounded-lg group relative"
                 onClick={() => setToggleMenu(false)}
               >
                 {user.username.toString().charAt(0).toUpperCase()+ user.username.slice(1,)}
                 <ul className="absolute hidden group-hover:flex bg-white border border-gray-300 mt-2 py-2 w-40 right-2 rounded-md shadow-lg flex-col items-center">
                   <li className="p-2">Profile</li>
-                  <li className="p-2" onClick={()=>{console.log(removeUser);removeUser()}}>Logout</li>
+                  <li className="p-2" onClick={()=>logoutUser()}>Logout</li>
                 </ul>
               </li>
             ) : (
@@ -87,13 +94,13 @@ const Navbar = () => {
                   className="cursor-pointer hover:bg-[#ec489a5d] bg-[#ec4899] pl-4 pr-4 p-1 rounded-2xl  text-white"
                   onClick={() => setToggleMenu(false)}
                 >
-                  <Link href={"/login"}>Login</Link>
+                  <Link href={"/auth/login"}>Login</Link>
                 </li>
                 <li
                   className="cursor-pointer hover:bg-[#ec489a5d] bg-[#ec4899] pl-2 pr-2 p-1 rounded-2xl  text-white"
                   onClick={() => setToggleMenu(false)}
                 >
-                  <Link href={"/signup"}>Signup</Link>
+                  <Link href={"/auth/signup"}>Signup</Link>
                 </li>
               </>
             )}

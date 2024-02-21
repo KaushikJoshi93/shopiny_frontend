@@ -4,7 +4,7 @@ function handleOnlineStatus() {
   } else {
     const htmlText = `
       <div style="width:100vw;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;">
-          <div style="display:flex;width:120px;">
+          <div style="display:flex;width:220px;">
             <svg viewBox="0 0 192 195" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
             <defs>
               <path d="M0 194.555V.675h191.961v193.88z"></path>
